@@ -12,9 +12,35 @@ use App\Models\User;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 
+/**
+ * @OA\Info(
+ *    title="Test Swagger",
+ *    description="An API of cool stuffs",
+ *    version="1.0.0",
+ * )
+ */
 class AuthController extends Controller
 {
-    //
+    /**
+     * @OA\Post(
+     *     path="/api/register",
+     *     summary="Registrar un nuevo usuario",
+     *     tags={"Autenticación"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"name","email","password"},
+     *             @OA\Property(property="name", type="string", example="Juan Pérez"),
+     *             @OA\Property(property="email", type="string", format="email", example="juan@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="12345678")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Usuario registrado con éxito"
+     *     )
+     * )
+     */
     public function register(RegisterRequest $request) : JsonResponse
     {
         $request->validated();
@@ -29,7 +55,29 @@ class AuthController extends Controller
 
         return $this->respondWithToken($token, $user, 'Usuario registrado con éxito');
     }
-
+    /**
+     * @OA\Post(
+     *     path="/api/login",
+     *     summary="Iniciar sesión",
+     *     tags={"Autenticación"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"email","password"},
+     *             @OA\Property(property="email", type="string", format="email", example="juan@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="12345678")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Inicio de sesión exitoso"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Credenciales inválidas"
+     *     )
+     * )
+     */
     public function login(LoginRequest $request) : JsonResponse
     {
 
@@ -49,7 +97,18 @@ class AuthController extends Controller
 
         return $this->respondWithToken($token, Auth::user(), 'Inicio de sesión exitoso');
     }
-
+    /**
+     * @OA\Post(
+     *     path="/api/logout",
+     *     summary="Cerrar sesión",
+     *     tags={"Autenticación"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Se cerró sesión correctamente"
+     *     )
+     * )
+     */
     public function logout() : JsonResponse
     {
         Auth::logout();
@@ -59,7 +118,18 @@ class AuthController extends Controller
             'message' => 'Se cerro session'
         ]);
     }
-
+    /**
+     * @OA\Post(
+     *     path="/api/refresh",
+     *     summary="Renovar token JWT",
+     *     tags={"Autenticación"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Token renovado con éxito"
+     *     )
+     * )
+     */
     public function refresh() : JsonResponse
     {
         return $this->respondWithToken(Auth::refresh(), Auth::user(), 'Token renovado');
