@@ -18,15 +18,30 @@ class Empleado extends Model
     protected $table = "empleados";
 
     protected $fillable = [
-        'nombre', 
-        'apellido_paterno', 
-        'apellido_materno', 
-        'email', 
-        'numero_celular', 
-        'fecha_contratacion', 
-        'salario', 
-        'estado'
+        'nombre',
+        'apellido_paterno',
+        'apellido_materno',
+        'carnet_identidad',
+        'fecha_nacimiento',
+        'pais',
+        'departamento',
+        'ciudad',
+        'zona',
+        'calle',
+        'numero_puerta',
+        'email',
+        'departamento_id',
+        'encargado_id',
+        'numero_celular',
+        'fecha_contratacion',
+        'salario',
+        'estado',
     ];
     
     protected $hidden = [];
+
+    public static function filtro(array $fields, string $value){
+        $value = trim(filter_var($value, FILTER_SANITIZE_STRING));
+        return self::query()->whereAny($fields, $value)->get();
+    }
 }

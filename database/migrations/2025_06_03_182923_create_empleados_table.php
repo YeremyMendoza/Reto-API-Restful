@@ -13,13 +13,21 @@ return new class extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->id('empleado_id');
-            $table->string('nombre');
-            $table->string('apellido_paterno');
-            $table->string('apellido_materno');
-            $table->string('email');
-            $table->string('numero_celular');
+            $table->string('nombre', 50);
+            $table->string('apellido_paterno', 50);
+            $table->string('apellido_materno', 50);
+            $table->char('carnet_identidad', 15)->unique();
+            $table->date('fecha_nacimiento');
+            $table->string('pais', 50);
+            $table->string('departamento', 50);
+            $table->string('ciudad', 50);
+            $table->string('zona', 50);
+            $table->string('calle', 100);
+            $table->string('numero_puerta', 10);
+            $table->string('email', 100);
+            $table->char('numero_celular', 15);
             $table->date('fecha_contratacion');
-            $table->integer('salario');
+            $table->decimal('salario', 10, 2);
             $table->boolean('estado')->default(true);
             $table->timestamps();
         });

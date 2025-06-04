@@ -15,6 +15,5 @@ Route::middleware(['jwt'])->group(function(){
         Route::post('refresh', 'refresh');
     });
     Route::apiResource('empleados', EmpleadoController::class);
-    Route::apiResource('departamentos', DepartamentoController::class)->except(['show']);
-    Route::get('departamentos/search', [DepartamentoController::class, 'search']);
+    Route::apiResource('departamentos', DepartamentoController::class);
 });

@@ -18,7 +18,16 @@ use App\Http\Requests\RegisterRequest;
  *    description="An API of cool stuffs",
  *    version="1.0.0",
  * )
+ *
+ * @OA\SecurityScheme(
+ *     securityScheme="bearerAuth",
+ *     type="http",
+ *     scheme="bearer",
+ *     bearerFormat="JWT",
+ *     description="Ingrese el token JWT prefijado con Bearer. Ejemplo: 'Bearer {token}'"
+ * )
  */
+
 class AuthController extends Controller
 {
     /**
