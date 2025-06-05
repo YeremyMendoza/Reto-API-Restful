@@ -132,6 +132,7 @@ class EmpleadoController extends Controller
     {
         //
         $fields = [
+            'empleado_id',
             'carnet_identidad',
             'departamento',
             'ciudad',

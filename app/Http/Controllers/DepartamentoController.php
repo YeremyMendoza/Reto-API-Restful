@@ -62,6 +62,7 @@ class DepartamentoController extends Controller
         $departamento = Departamento::create([
             'nombre_departamento' => $request->nombre_departamento,
             'encargado_id' => $request->encargado_id,
+            'subdepartamento_de' => $request->subdepartamento_de
         ]);
 
         return response()->json([
@@ -151,6 +152,7 @@ class DepartamentoController extends Controller
         $departamento->update([
             'nombre_departamento' => $request->nombre_departamento,
             'encargado_id' => $request->encargado_id,
+            'subdepartamento_de' => $request->subdepartamento_de
         ]);
 
         return response()->json([
@@ -190,6 +192,6 @@ class DepartamentoController extends Controller
 
     private function serializeDepartamento(Departamento $dpto)
     {
-        return $dpto->only(['departamento_id', 'nombre_departamento', 'encargado_id']);
+        return $dpto->only(['departamento_id', 'nombre_departamento', 'encargado_id', 'subdepartamento_de']);
     }
 }

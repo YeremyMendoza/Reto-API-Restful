@@ -547,9 +547,218 @@
                     }
                 ]
             }
+        },
+        "/api/jerarquia": {
+            "get": {
+                "tags": [
+                    "Jerarquía Organizacional"
+                ],
+                "summary": "Obtener jerarquía de departamentos principales",
+                "operationId": "2ec484c88dc764247f6fb3f152c538e4",
+                "responses": {
+                    "200": {
+                        "description": "Lista de departamentos principales con sus subdepartamentos, encargados y subordinados",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Departamento"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/jerarquia/{id}": {
+            "get": {
+                "tags": [
+                    "Jerarquía Organizacional"
+                ],
+                "summary": "Obtener información de un departamento y su jerarquía interna",
+                "operationId": "008cb0d8f8ef5f72570b63479f4ab503",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del departamento",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Información del departamento con subdepartamentos, encargados, subordinados y empleados",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Departamento"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Departamento no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {
+        "schemas": {
+            "Departamento": {
+                "required": [
+                    "nombre_departamento"
+                ],
+                "properties": {
+                    "departamento_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nombre_departamento": {
+                        "type": "string",
+                        "example": "Recursos Humanos"
+                    },
+                    "encargado_id": {
+                        "type": "integer",
+                        "example": 3
+                    },
+                    "subdepartamento_de": {
+                        "type": "integer",
+                        "example": null,
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-06-05T12:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-06-05T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Empleado": {
+                "required": [
+                    "nombre",
+                    "apellido_paterno",
+                    "carnet_identidad",
+                    "email"
+                ],
+                "properties": {
+                    "empleado_id": {
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Juan"
+                    },
+                    "apellido_paterno": {
+                        "type": "string",
+                        "example": "Pérez"
+                    },
+                    "apellido_materno": {
+                        "type": "string",
+                        "example": "Gonzales"
+                    },
+                    "carnet_identidad": {
+                        "type": "string",
+                        "example": "12345678"
+                    },
+                    "fecha_nacimiento": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "1990-01-01"
+                    },
+                    "pais": {
+                        "type": "string",
+                        "example": "Bolivia"
+                    },
+                    "departamento": {
+                        "type": "string",
+                        "example": "La Paz"
+                    },
+                    "ciudad": {
+                        "type": "string",
+                        "example": "El Alto"
+                    },
+                    "zona": {
+                        "type": "string",
+                        "example": "Villa Adela"
+                    },
+                    "calle": {
+                        "type": "string",
+                        "example": "Calle 1"
+                    },
+                    "numero_puerta": {
+                        "type": "string",
+                        "example": "456"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "juan@example.com"
+                    },
+                    "departamento_id": {
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "encargado_id": {
+                        "type": "integer",
+                        "example": 1,
+                        "nullable": true
+                    },
+                    "numero_celular": {
+                        "type": "string",
+                        "example": "77712345"
+                    },
+                    "fecha_contratacion": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2020-05-10"
+                    },
+                    "salario": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 3500.5
+                    },
+                    "estado": {
+                        "type": "string",
+                        "example": "activo"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-06-05T12:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-06-05T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "securitySchemes": {
             "bearerAuth": {
                 "type": "http",
@@ -571,6 +780,10 @@
         {
             "name": "Empleados",
             "description": "Empleados"
+        },
+        {
+            "name": "Jerarquía Organizacional",
+            "description": "Jerarquía Organizacional"
         }
     ]
 }

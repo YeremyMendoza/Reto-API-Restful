@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('departamentos', function (Blueprint $table) {
             $table->id('departamento_id');
-            $table->string('nombre_departamento')->unique();
+            $table->string('nombre_departamento', 50)->unique();
+            $table->foreignId('subdepartamento_de')->nullable()->constrained('departamentos', 'departamento_id');
             $table->timestamps();
         });
     }

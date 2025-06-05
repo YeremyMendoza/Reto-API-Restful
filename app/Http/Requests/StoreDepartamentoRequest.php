@@ -33,6 +33,7 @@ class StoreDepartamentoRequest extends FormRequest
                 'max:20', 
                 Rule::unique('departamentos', 'nombre_departamento')->ignore($this->route('id'), 'departamento_id')],
             'encargado_id' => ['integer', 'nullable', 'sometimes', 'exists:empleados,empleado_id', 'unique:departamentos'],
+            'subdepartamento_de' => ['integer', 'nullable', 'sometimes', 'exists:departamentos'],
         ];
     }
 }

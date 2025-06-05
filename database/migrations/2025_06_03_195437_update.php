@@ -17,7 +17,7 @@ return new class extends Migration
         });
 
         Schema::table('empleados', function (Blueprint $table) {
-            $table->foreignId('departamento_id')->nullable()->constrained('departamentos', 'departamento_id');
+            $table->foreignId('departamento_id')->constrained('departamentos', 'departamento_id');
             $table->foreignId('encargado_id')->nullable()->constrained('empleados', 'empleado_id');
         });
     }

@@ -26,7 +26,8 @@ class UpdateDepartamentoRequest extends FormRequest
         return [
             //
             'nombre_departamento' => [ 'string', 'min:4', 'max:20'],
-            'encargado_id' => ['integer', 'nullable', 'sometimes', 'exists:empleados,empleado_id'],
+            'encargado_id' => ['integer', 'nullable', 'sometimes', 'exists:empleados,empleado_id', 'unique:departamentos,encargado_id'],
+            'subdepartamento_de' => ['integer', 'nullable', 'sometimes', 'exists:departamentos,departamento_id'],
         ];
     }
 }

@@ -15,6 +15,8 @@ class DepartamentoObserver
     public function created(Departamento $departamento): void
     {
         //
+        $departamento->empleados()->update(['encargado_id' => $departamento->encargado_id]);
+        $departamento->encargado()->update(['departamento_id' => $departamento->departamento_id]);
     }
 
     public function updating(Departamento $departamento): void

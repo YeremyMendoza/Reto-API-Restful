@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('calle', 100);
             $table->string('numero_puerta', 10);
             $table->string('email', 100);
-            $table->char('numero_celular', 15);
+            $table->char('numero_celular', 20);
             $table->date('fecha_contratacion');
             $table->decimal('salario', 10, 2);
             $table->boolean('estado')->default(true);

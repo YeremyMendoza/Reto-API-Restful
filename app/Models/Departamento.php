@@ -10,6 +10,19 @@ use App\Observers\DepartamentoObserver;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @OA\Schema(
+ *     schema="Departamento",
+ *     required={"nombre_departamento"},
+ *     @OA\Property(property="departamento_id", type="integer", example=1),
+ *     @OA\Property(property="nombre_departamento", type="string", example="Recursos Humanos"),
+ *     @OA\Property(property="encargado_id", type="integer", example=3),
+ *     @OA\Property(property="subdepartamento_de", type="integer", nullable=true, example=null),
+ *     @OA\Property(property="created_at", type="string", format="date-time", example="2024-06-05T12:00:00Z"),
+ *     @OA\Property(property="updated_at", type="string", format="date-time", example="2024-06-05T12:00:00Z")
+ * )
+ */
+
 #[ObservedBy([DepartamentoObserver::class])]
 class Departamento extends Model
 {
@@ -23,7 +36,7 @@ class Departamento extends Model
     protected $keyType = "integer";
     protected $table = "departamentos";
 
-    protected $fillable = ['nombre_departamento', 'encargado_id'];
+    protected $fillable = ['nombre_departamento', 'encargado_id', "subdepartamento_de"];
     protected $hidden = [];
 
     public function empleados() : HasMany
@@ -34,6 +47,11 @@ class Departamento extends Model
     public function encargado() : BelongsTo
     {
         return $this->belongsTo(Empleado::class, 'encargado_id');
+    }
+
+    public function subdepartamentos(): HasMany
+    {
+        return $this->hasMany(Departamento::class, 'subdepartamento_de');
     }
 
     public static function filtro(array $fields, string $value){
