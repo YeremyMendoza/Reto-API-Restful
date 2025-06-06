@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        User::factory()->count(1)->create();
+
         Departamento::factory()
         ->has(
             Departamento::factory()->count(2)->state(function(array $attributes, Departamento $departamento){

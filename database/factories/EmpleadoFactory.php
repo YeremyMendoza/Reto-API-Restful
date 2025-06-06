@@ -19,8 +19,8 @@ class EmpleadoFactory extends Factory
         return [
             //
             'nombre' => fake()->firstName(),
-            'apellido_paterno' => fake()->lastname(),
-            'apellido_materno' => fake()->lastname(),
+            'apellido_paterno' => fake()->lastName(),
+            'apellido_materno' => fake()->lastName(),
             'carnet_identidad' => fake()->unique()->numberBetween(1000000, 7000000),
             'fecha_nacimiento' => fake()->date('Y_m_d'),
             'pais' => fake()->country(),
@@ -30,7 +30,7 @@ class EmpleadoFactory extends Factory
             'calle' => fake()->streetName(),
             'numero_puerta' => fake()->buildingNumber(),
             'email' => fake()->email(),
-            'numero_celular' => fake()->phoneNumber(),
+            'numero_celular' => (string) fake()->numberBetween(10000000, 99999999),
             'fecha_contratacion' => fake()->date('Y_m_d'),
             'salario' => fake()->numberBetween(2000, 10000)
         ];

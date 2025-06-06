@@ -41,10 +41,10 @@ class UpdateEmpleadoRequest extends FormRequest
             'email' => ['string', 'email', 'max:100'],
             'numero_celular' => ['required', 'string', 'min:7', 'max:15'],
             'fecha_contratacion' => ['required', 'date', Rule::date()->format('Y-m-d')],
-            'salario' => ['required', 'decimal:2,4'],
+            'salario' => ['required', 'numeric', 'max:999999.9999'],
             'departamento_id' => ['required', 'exists:departamentos,departamento_id'],
             'encargado_id' => ['nullable', 'exists:empleados,empleado_id'],
-            'estado' => ['boolean', 'sometimes', Rule::in(['1', '0'])]
+            'estado' => ['boolean', 'sometimes']
         ];
     }
 }

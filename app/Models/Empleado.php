@@ -43,7 +43,6 @@ class Empleado extends Model
 
     public $incrementing  = true;
     public $timestamps = true;
-    protected $connection = "mysql";
     protected $primaryKey = "empleado_id";
     protected $keyType = "integer";
     protected $table = "empleados";

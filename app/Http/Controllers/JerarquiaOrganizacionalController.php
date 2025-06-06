@@ -25,7 +25,7 @@ class JerarquiaOrganizacionalController extends Controller
      */
     public function jerarquia(): JsonResponse
     {
-        $departamentos = Departamento::with('subdepartamentos.encargado.subordinados')
+        $departamentos = Departamento::with('subdepartamentos.encargado.subordinados', 'encargado')
         ->whereNull('subdepartamento_de') // solo departamentos principales
         ->get();
 

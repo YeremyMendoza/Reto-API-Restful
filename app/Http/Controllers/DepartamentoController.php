@@ -59,11 +59,7 @@ class DepartamentoController extends Controller
     public function store(StoreDepartamentoRequest $request) : JsonResponse
     {
         //
-        $departamento = Departamento::create([
-            'nombre_departamento' => $request->nombre_departamento,
-            'encargado_id' => $request->encargado_id,
-            'subdepartamento_de' => $request->subdepartamento_de
-        ]);
+        $departamento = Departamento::create($request->validated());
 
         return response()->json([
             'status' => 'success',
@@ -149,11 +145,7 @@ class DepartamentoController extends Controller
         //
         $departamento = Departamento::findOrFail($id);
 
-        $departamento->update([
-            'nombre_departamento' => $request->nombre_departamento,
-            'encargado_id' => $request->encargado_id,
-            'subdepartamento_de' => $request->subdepartamento_de
-        ]);
+        $departamento->update($request->validated());
 
         return response()->json([
             'status' => 'success',
@@ -183,7 +175,9 @@ class DepartamentoController extends Controller
     public function destroy(string $id)
     {
         //
-        Departamento::destroy($id);
+        $deparamento = Departamento::findOrFail($id);
+
+        $deparamento->delete();
 
         return response()->json([
             'status' => 'success',

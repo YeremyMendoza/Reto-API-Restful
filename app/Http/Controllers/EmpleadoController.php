@@ -43,10 +43,7 @@ class EmpleadoController extends Controller
         //
         $empleados = Empleado::paginate(20);
 
-        return response()->json([
-            'status' => 'success',
-            'data' => $empleados
-        ], 200);
+        return response()->json($empleados, 200);
     }
 
     /**
@@ -68,26 +65,7 @@ class EmpleadoController extends Controller
     public function store(StoreEmpleadoRequest $request) : JsonResponse
     {
         //
-        $empleado = Empleado::create([
-            'nombre' => $request->nombre,
-            'apellido_paterno' => $request->apellido_paterno,
-            'apellido_materno' => $request->apellido_materno,
-            'carnet_identidad' => $request->carnet_identidad,
-            'fecha_nacimiento' => $request->fecha_nacimiento,
-            'pais' => $request->pais,
-            'departamento' => $request->departamento,
-            'ciudad' => $request->ciudad,
-            'zona' => $request->zona,
-            'calle' => $request->calle,
-            'numero_puerta' => $request->numero_puerta,
-            'email' => $request->email,
-            'departamento_id' => $request->departamento_id,
-            'encargado_id' => $request->encargado_id,
-            'numero_celular' => $request->numero_celular,
-            'fecha_contratacion' => $request->fecha_contratacion,
-            'salario' => $request->salario,
-            'estado' => $request->estado,
-        ]);
+        $empleado = Empleado::create($request->validated());
 
         return response()->json([
             'status' => 'success',
@@ -130,14 +108,13 @@ class EmpleadoController extends Controller
      */
     public function show(string $value) : JsonResponse
     {
-        //
+        //campos permitidos para busqueda
         $fields = [
             'empleado_id',
             'carnet_identidad',
             'departamento',
             'ciudad',
-            'numero_celular',
-            'estado'
+            'numero_celular'
         ];
         $departamento = Empleado::filtro($fields, $value);
 
@@ -184,26 +161,8 @@ class EmpleadoController extends Controller
     {
         //
         $empleado = Empleado::findOrFail($id);
-        $empleado->update([
-            'nombre' => $request->nombre,
-            'apellido_paterno' => $request->apellido_paterno,
-            'apellido_materno' => $request->apellido_materno,
-            'carnet_identidad' => $request->carnet_identidad,
-            'fecha_nacimiento' => $request->fecha_nacimiento,
-            'pais' => $request->pais,
-            'departamento' => $request->departamento,
-            'ciudad' => $request->ciudad,
-            'zona' => $request->zona,
-            'calle' => $request->calle,
-            'numero_puerta' => $request->numero_puerta,
-            'email' => $request->email,
-            'departamento_id' => $request->departamento_id,
-            'encargado_id' => $request->encargado_id,
-            'numero_celular' => $request->numero_celular,
-            'fecha_contratacion' => $request->fecha_contratacion,
-            'salario' => $request->salario,
-            'estado' => $request->estado,
-        ]);
+
+        $empleado->update($request->validated());
 
         return response()->json([
             'status' => 'success',
@@ -236,7 +195,9 @@ class EmpleadoController extends Controller
     public function destroy(string $id) : JsonResponse
     {
         //
-        Empleado::destroy($id);
+        $empleado = Empleado::findOrFail($id);
+
+        $empleado->delete();
 
         return response()->json([
             'status' => 'success',

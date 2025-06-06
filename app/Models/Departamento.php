@@ -31,12 +31,14 @@ class Departamento extends Model
 
     public $incrementing  = true;
     public $timestamps = true;
-    protected $connection = "mysql";
     protected $primaryKey = "departamento_id";
     protected $keyType = "integer";
     protected $table = "departamentos";
 
-    protected $fillable = ['nombre_departamento', 'encargado_id', "subdepartamento_de"];
+    protected $fillable = [
+        'nombre_departamento', 
+        'encargado_id', 
+        'subdepartamento_de'];
     protected $hidden = [];
 
     public function empleados() : HasMany

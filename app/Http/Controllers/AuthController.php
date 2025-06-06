@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -62,7 +61,7 @@ class AuthController extends Controller
 
         $token = Auth::login($user);
 
-        return $this->respondWithToken((string) $token, $user, 'Usuario registrado con éxito');
+        return $this->respondWithToken((string) $token, $user, 'Usuario registrado con éxito', 201);
     }
     /**
      * @OA\Post(
@@ -104,7 +103,7 @@ class AuthController extends Controller
 
         $user = Auth::user();
 
-        return $this->respondWithToken($token, Auth::user(), 'Inicio de sesión exitoso');
+        return $this->respondWithToken($token, Auth::user(), 'Inicio de sesión exitoso', 201);
     }
     /**
      * @OA\Post(
@@ -125,7 +124,7 @@ class AuthController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Se cerro session'
-        ]);
+        ], 200);
     }
     /**
      * @OA\Post(
@@ -141,10 +140,10 @@ class AuthController extends Controller
      */
     public function refresh() : JsonResponse
     {
-        return $this->respondWithToken(Auth::refresh(), Auth::user(), 'Token renovado');
+        return $this->respondWithToken(Auth::refresh(), Auth::user(), 'Token renovado', 200);
     }
 
-    protected function respondWithToken(string $token, User $user, string $message): JsonResponse
+    protected function respondWithToken(string $token, User $user, string $message, $code): JsonResponse
     {
         return response()->json([
             'status' => 'success',
@@ -155,6 +154,6 @@ class AuthController extends Controller
                 'type' => 'bearer',
                 'expires_in' => Auth::factory()->getTTL() * 60,
             ],
-        ]);
+        ], $code);
     }
 }
