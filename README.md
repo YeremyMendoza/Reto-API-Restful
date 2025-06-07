@@ -17,15 +17,25 @@
 
 Este proyecto consiste en el desarrollo de una API RESTful utilizando **Laravel 12** para gestionar empleados dentro de una empresa.
 
-## 🎯 Objetivo
+## 🎯 Objetivos Planteados
+
+Implementar un sistema backend con las siguientes funcionalidades:
+
+- Autenticación de usuarios mediante **JWT**.
+- Gestión de empleados: crear, editar, eliminar y listar empleados con filtros (nombre, departamento, estado, fecha de ingreso, etc.).
+- Gestión de departamentos y asociación con empleados.
+- **Opcional**: asignación de jefes por departamento (solo un jefe por departamento).
+- **Opcional**: reporte jerárquico por departamento (estructura de supervisión).
+
+## 🎯 Objetivos logrados
 
 Implementar un sistema backend con las siguientes funcionalidades:
 
 - ✅ Autenticación de usuarios mediante **JWT**.
 - ✅ Gestión de empleados: crear, editar, eliminar y listar empleados con filtros (nombre, departamento, estado, fecha de ingreso, etc.).
 - ✅ Gestión de departamentos y asociación con empleados.
-- 🔄 **Opcional**: asignación de jefes por departamento (solo un jefe por departamento).
-- 🧭 **Opcional**: reporte jerárquico por departamento (estructura de supervisión).
+- ✅ **Opcional**: asignación de jefes por departamento (solo un jefe por departamento).
+- ✅ **Opcional**: reporte jerárquico por departamento (estructura de supervisión).
 
 ## ⚙️ Consideraciones técnicas
 
