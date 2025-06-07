@@ -67,7 +67,7 @@ copy .env.example .env   # En Windows con XAMPP
 php artisan key:generate
 php artisan jwt:secret
 ```
-##🛠️ Configuración de base de datos
+## 🛠️ Configuración de base de datos
 Edita el archivo .env con tus datos locales de XAMPP:
 ```env
 DB_CONNECTION=mysql
@@ -77,7 +77,7 @@ DB_DATABASE=nombre_de_tu_base
 DB_USERNAME=root
 DB_PASSWORD=  # en blanco por defecto en XAMPP
 ```
-##🧱 Migraciones y datos iniciales
+## 🧱 Migraciones y datos iniciales
 ```bash
 # Crear las tablas
 php artisan migrate
@@ -85,23 +85,23 @@ php artisan migrate
 # (Opcional) Poblar la base de datos con datos de ejemplo
 php artisan db:seed
 ```
-#🧪 Ejecutar pruebas
+# 🧪 Ejecutar pruebas
 ```bash
 php artisan test
 ```
 Deberias ver resultados como
 ```bash
- PASS  Tests\Feature\AuthTest
-  ✓ Registro de nuevo usuario                                                       2.76s  
-  ✓ Inicio de sesión                                                                0.05s  
-  ✓ Cierre de sesión                                                                0.04s  
+ ![PASS](https://img.shields.io/badge/PASS-success?style=flat&logo=checkmarx&logoColor=white&labelColor=green)  Tests\Feature\AuthTest
+  ✔️ Registro de nuevo usuario                                                       2.76s  
+  ✔️ Inicio de sesión                                                                0.05s  
+  ✔️ Cierre de sesión                                                                0.04s  
 
    PASS  Tests\Feature\DepartamentoTest
-  ✓ puede visualizar datos de todos los departamentos                               0.05s  
-  ✓ puede visualizar la jerarquia de todos los departamentos tipo arbol             0.08s  
-  ✓ puede visualizar la jerarquia de un departamento mostrando departamento, encar… 0.05s  
-  ✓ puede registrar un nuevo departamento                                           0.06s  
-  ✓ puede actualizar un departamento existente con datos correctos                  0.06s  
+  ✔️ puede visualizar datos de todos los departamentos                               0.05s  
+  ✔️ puede visualizar la jerarquia de todos los departamentos tipo arbol             0.08s  
+  ✔️ puede visualizar la jerarquia de un departamento mostrando departamento, encar… 0.05s  
+  ✔️ puede registrar un nuevo departamento                                           0.06s  
+  ✔️ puede actualizar un departamento existente con datos correctos                  0.06s  
   ✓ no puede actualizar un departamento no existente                                0.05s  
   ✓ no puede eliminar un departamento no existente                                  0.04s  
   ✓ puede eliminar un departamento existente                                        0.05s  
@@ -120,7 +120,8 @@ Deberias ver resultados como
   Tests:    19 passed (92 assertions)
   Duration: 4.03s
 ```
-#📬 Documentación API
+## 📬 Documentación API
+
 Este proyecto incluye documentación completa de la API generada con Swagger (OpenAPI 3) mediante el paquete L5-Swagger.
 
 ```bash
@@ -131,10 +132,9 @@ Si quieres regenerar la documentación después de cambios en los controladores 
 🔍 Puedes acceder a la documentación interactiva localmente desde la ruta: .../api/documentation
 
 
-#📌 Notas
+## 📌 Notas
 - Este proyecto no incluye frontend, pero puede consumirse desde Postman, Insomnia u otra herramienta API.
 - Se recomienda utilizar HTTPS en producción.
 - Si necesitas una versión Dockerizada.
-##🤝 Autor
+## 🤝 Autor
 Yeremy Mendoza
-🔗 GitHub
