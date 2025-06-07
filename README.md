@@ -91,31 +91,31 @@ php artisan test
 ```
 Deberias ver resultados como
 ```bash
- ![PASS](https://img.shields.io/badge/PASS-success?style=flat&logo=checkmarx&logoColor=white&labelColor=green)  Tests\Feature\AuthTest
+ 🟩 **PASS** Tests\Feature\AuthTest
   ✔️ Registro de nuevo usuario                                                       2.76s  
   ✔️ Inicio de sesión                                                                0.05s  
   ✔️ Cierre de sesión                                                                0.04s  
 
-   PASS  Tests\Feature\DepartamentoTest
+🟩 **PASS** Tests\Feature\DepartamentoTest
   ✔️ puede visualizar datos de todos los departamentos                               0.05s  
   ✔️ puede visualizar la jerarquia de todos los departamentos tipo arbol             0.08s  
   ✔️ puede visualizar la jerarquia de un departamento mostrando departamento, encar… 0.05s  
   ✔️ puede registrar un nuevo departamento                                           0.06s  
   ✔️ puede actualizar un departamento existente con datos correctos                  0.06s  
-  ✓ no puede actualizar un departamento no existente                                0.05s  
-  ✓ no puede eliminar un departamento no existente                                  0.04s  
-  ✓ puede eliminar un departamento existente                                        0.05s  
+  ✔️ no puede actualizar un departamento no existente                                0.05s  
+  ✔️ no puede eliminar un departamento no existente                                  0.04s  
+  ✔️ puede eliminar un departamento existente                                        0.05s  
 
-   PASS  Tests\Feature\EmpleadoTest
-  ✓ puede visualizar datos de todos los empleados                                   0.05s  
-  ✓ puede registrar un nuevo empleado con datos correctos                           0.05s  
-  ✓ puede actualizar un empleado existente con datos correctos                      0.06s  
-  ✓ no puede actualizar un empleado no existente                                    0.05s  
-  ✓ no puede eliminar un empleado no existente                                      0.04s  
-  ✓ puede eliminar un empleado existente                                            0.06s  
+🟩 **PASS** Tests\Feature\EmpleadoTest
+  ✔️ puede visualizar datos de todos los empleados                                   0.05s  
+  ✔️ puede registrar un nuevo empleado con datos correctos                           0.05s  
+  ✔️ puede actualizar un empleado existente con datos correctos                      0.06s  
+  ✔️ no puede actualizar un empleado no existente                                    0.05s  
+  ✔️ no puede eliminar un empleado no existente                                      0.04s  
+  ✔️ puede eliminar un empleado existente                                            0.06s  
 
-   PASS  Tests\Feature\ExampleTest
-  ✓ the application returns a successful response                                   0.08s  
+🟩 **PASS** Tests\Feature\ExampleTest
+  ✔️ the application returns a successful response                                   0.08s  
 
   Tests:    19 passed (92 assertions)
   Duration: 4.03s
@@ -129,7 +129,7 @@ php artisan l5-swagger:generate
 ```
 Si quieres regenerar la documentación después de cambios en los controladores o rutas, usa el comando anterior.
 
-🔍 Puedes acceder a la documentación interactiva localmente desde la ruta: .../api/documentation
+🔍 Puedes acceder a la documentación interactiva localmente desde la ruta: localhost/api/documentation
 
 
 ## 📌 Notas
