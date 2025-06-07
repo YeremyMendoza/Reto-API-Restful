@@ -26,6 +26,8 @@ Implementar un sistema backend con las siguientes funcionalidades:
 - Gestión de departamentos y asociación con empleados.
 - **Opcional**: asignación de jefes por departamento (solo un jefe por departamento).
 - **Opcional**: reporte jerárquico por departamento (estructura de supervisión).
+- **Opcional**: Pruebas automaticas.
+- **Opcional**: Documentacion con Swagger.
 
 ## 🎯 Objetivos logrados
 
@@ -36,6 +38,8 @@ Implementar un sistema backend con las siguientes funcionalidades:
 - ✅ Gestión de departamentos y asociación con empleados.
 - ✅ **Opcional**: asignación de jefes por departamento (solo un jefe por departamento).
 - ✅ **Opcional**: reporte jerárquico por departamento (estructura de supervisión).
+- ✅ **Opcional**: Pruebas automaticas.
+- ✅ **Opcional**: Documentacion con Swagger.
 
 ## ⚙️ Consideraciones técnicas
 
@@ -61,7 +65,7 @@ Implementar un sistema backend con las siguientes funcionalidades:
 ## 🚀 Instalación
 
 ```bash
-# Clonar el repositorio
+# Clonar el repositorio en directorio htdocs
 git clone https://github.com/YeremyMendoza/Reto-API-Restful.git
 
 # Entrar al directorio del proyecto
